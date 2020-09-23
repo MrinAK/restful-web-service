@@ -1,19 +1,21 @@
 package eu.restfulwebservice.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+public class User {
 
-    private Integer userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
 
     private String mail;
 
     private String userUniqueId;
 
+    //    TODO
     private Integer roleId;
 
     private String firstName;
@@ -24,9 +26,10 @@ public class User extends BaseEntity {
 
     private Instant dateModified;
 
+    //    TODO
     private String password;
 
-    private User(Integer userId, String mail, String userUniqueId,
+    private User(Long userId, String mail, String userUniqueId,
                  Integer roleId, String firstName,
                  String lastName, Instant dataCreated,
                  Instant dateModified, String password) {
@@ -44,11 +47,20 @@ public class User extends BaseEntity {
     protected User() {
     }
 
-    public Integer getUserId() {
+    public static User create(Long userId, String mail, String userUniqueId,
+                              Integer roleId, String firstName,
+                              String lastName, Instant dataCreated,
+                              Instant dateModified, String password) {
+
+        return new User(userId, mail, userUniqueId, roleId, firstName,
+                        lastName, dataCreated, dateModified, password);
+    }
+
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -115,4 +127,5 @@ public class User extends BaseEntity {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

@@ -4,9 +4,7 @@ import java.time.Instant;
 
 public class UserDTO {
 
-    private Long id;
-
-    private Integer userId;
+    private Long userId;
 
     private String mail;
 
@@ -24,11 +22,8 @@ public class UserDTO {
 
     private String password;
 
-    public UserDTO(Long id, Integer userId, String mail, String userUniqueId,
-                    Integer roleId, String firstName,
-                    String lastName, Instant dataCreated,
-                    Instant dateModified, String password) {
-        this.id = id;
+    public UserDTO(Long userId, String mail, String userUniqueId, Integer roleId, String firstName,
+                   String lastName, Instant dataCreated, Instant dateModified, String password) {
         this.userId = userId;
         this.mail = mail;
         this.userUniqueId = userUniqueId;
@@ -43,19 +38,11 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
