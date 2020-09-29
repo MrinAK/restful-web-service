@@ -1,6 +1,7 @@
 package eu.restfulwebservice.persistence.entity;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.time.Instant;
 
 @Entity
@@ -15,8 +16,7 @@ public class User {
 
     private String userUniqueId;
 
-    //    TODO
-    private Integer roleId;
+    private Long roleId;
 
     private String firstName;
 
@@ -30,7 +30,7 @@ public class User {
     private String password;
 
     private User(Long userId, String mail, String userUniqueId,
-                 Integer roleId, String firstName,
+                 Long roleId, String firstName,
                  String lastName, Instant dataCreated,
                  Instant dateModified, String password) {
         this.userId = userId;
@@ -48,12 +48,12 @@ public class User {
     }
 
     public static User create(Long userId, String mail, String userUniqueId,
-                              Integer roleId, String firstName,
+                              Long roleId, String firstName,
                               String lastName, Instant dataCreated,
                               Instant dateModified, String password) {
 
         return new User(userId, mail, userUniqueId, roleId, firstName,
-                        lastName, dataCreated, dateModified, password);
+                lastName, dataCreated, dateModified, password);
     }
 
     public Long getUserId() {
@@ -80,11 +80,11 @@ public class User {
         this.userUniqueId = userUniqueId;
     }
 
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 

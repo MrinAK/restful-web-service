@@ -5,7 +5,6 @@ import eu.restfulwebservice.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,36 +21,28 @@ public class UserController {
     }
 
     @GetMapping("/")
-//    @PreAuthorize("")
+//  TODO @PreAuthorize("")
     public List<UserDTO> getAll() {
         return userService.findAll();
     }
 
     @PostMapping("/")
-//    @PreAuthorize("")
+//  TODO @PreAuthorize("")
     public ResponseEntity<Void> create(@RequestBody UserDTO userDTO) {
         userService.create(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{userId}")
-//    @PreAuthorize("")
+//    TODO @PreAuthorize("")
     public UserDTO findById(@PathVariable("userId") Long userId) {
         return userService.findById(userId);
     }
 
     @DeleteMapping("/{userId}")
-//    @PreAuthorize("")
-    public ResponseEntity<Void> hardDelete(@PathVariable("userId") Long userId) {
+//  TODO @PreAuthorize("")
+    public ResponseEntity<Void> delete(@PathVariable("userId") Long userId) {
         userService.deleteById(userId);
         return new ResponseEntity<>(HttpStatus.GONE);
     }
-
-    @DeleteMapping("/{userId}")
-//    @PreAuthorize("")
-    public ResponseEntity<Void> softDelete(@PathVariable("userId") Long userId) {
-        userService.deleteById(userId);
-        return new ResponseEntity<>(HttpStatus.GONE);
-    }
-
 }

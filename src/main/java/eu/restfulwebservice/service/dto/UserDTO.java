@@ -10,7 +10,7 @@ public class UserDTO {
 
     private String userUniqueId;
 
-    private Integer roleId;
+    private Long roleId;
 
     private String firstName;
 
@@ -22,7 +22,7 @@ public class UserDTO {
 
     private String password;
 
-    public UserDTO(Long userId, String mail, String userUniqueId, Integer roleId, String firstName,
+    public UserDTO(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
                    String lastName, Instant dataCreated, Instant dateModified, String password) {
         this.userId = userId;
         this.mail = mail;
@@ -62,11 +62,11 @@ public class UserDTO {
         this.userUniqueId = userUniqueId;
     }
 
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
