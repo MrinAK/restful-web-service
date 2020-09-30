@@ -1,7 +1,6 @@
 package eu.restfulwebservice.persistence.entity;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.time.Instant;
 
 @Entity
@@ -29,10 +28,9 @@ public class User {
     //    TODO
     private String password;
 
-    private User(Long userId, String mail, String userUniqueId,
-                 Long roleId, String firstName,
-                 String lastName, Instant dataCreated,
-                 Instant dateModified, String password) {
+
+    private User(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
+                 String lastName, Instant dataCreated, Instant dateModified, String password) {
         this.userId = userId;
         this.mail = mail;
         this.userUniqueId = userUniqueId;
@@ -44,16 +42,15 @@ public class User {
         this.password = password;
     }
 
-    protected User() {
+    public User(String mail, Long roleId, String firstName, String lastName, String password) {
+        this.mail = mail;
+        this.roleId = roleId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
     }
 
-    public static User create(Long userId, String mail, String userUniqueId,
-                              Long roleId, String firstName,
-                              String lastName, Instant dataCreated,
-                              Instant dateModified, String password) {
-
-        return new User(userId, mail, userUniqueId, roleId, firstName,
-                lastName, dataCreated, dateModified, password);
+    protected User() {
     }
 
     public Long getUserId() {
@@ -128,4 +125,19 @@ public class User {
         this.password = password;
     }
 
+
+    public static User create(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
+                              String lastName, Instant dataCreated, Instant dateModified, String password) {
+
+        return new User(userId, mail, userUniqueId, roleId, firstName,
+                lastName, dataCreated, dateModified, password);
+    }
+
+    public void update(User newUser) {
+        this.mail = newUser.mail;
+        this.roleId = newUser.roleId;
+        this.firstName = newUser.firstName;
+        this.lastName = newUser.lastName;
+        this.password = newUser.password;
+    }
 }

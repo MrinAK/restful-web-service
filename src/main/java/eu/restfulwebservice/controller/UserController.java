@@ -5,6 +5,7 @@ import eu.restfulwebservice.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class UserController {
 
     @PostMapping("/")
 //  TODO @PreAuthorize("")
-    public ResponseEntity<Void> create(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<Void> create(@RequestBody @Validated UserDTO userDTO) {
         userService.create(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -41,8 +42,14 @@ public class UserController {
 
     @DeleteMapping("/{userId}")
 //  TODO @PreAuthorize("")
-    public ResponseEntity<Void> delete(@PathVariable("userId") Long userId) {
+    public ResponseEntity<Void> deleteById(@PathVariable("userId") Long userId) {
         userService.deleteById(userId);
         return new ResponseEntity<>(HttpStatus.GONE);
+    }
+
+    @PutMapping("/{userId}")
+//  TODO @PreAuthorize("")
+    public ResponseEntity<UserDTO> updateById(@PathVariable("userId") Long userId, @RequestBody @Validated UserDTO userDTO){
+        return ResponseEntity.ok(userService.updateById(userId, userDTO));
     }
 }

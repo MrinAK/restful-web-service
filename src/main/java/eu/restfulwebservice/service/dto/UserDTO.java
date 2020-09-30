@@ -22,6 +22,7 @@ public class UserDTO {
 
     private String password;
 
+
     public UserDTO(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
                    String lastName, Instant dataCreated, Instant dateModified, String password) {
         this.userId = userId;
@@ -35,8 +36,17 @@ public class UserDTO {
         this.password = password;
     }
 
+    public UserDTO(String mail, Long roleId, String firstName, String lastName, String password) {
+        this.mail = mail;
+        this.roleId = roleId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
+
     public UserDTO() {
     }
+
 
     public Long getUserId() {
         return userId;
@@ -109,4 +119,5 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

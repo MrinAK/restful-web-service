@@ -23,8 +23,7 @@ public class UserService {
 
     public void create(UserDTO userDTO) {
 
-        User user = User.create(
-                userDTO.getUserId(),
+        User user = User.create(userDTO.getUserId(),
                 userDTO.getMail(),
                 userDTO.getUserUniqueId(),
                 userDTO.getRoleId(),
@@ -33,7 +32,6 @@ public class UserService {
                 userDTO.getDataCreated(),
                 userDTO.getDateModified(),
                 userDTO.getPassword());
-
         userRepository.save(user);
     }
 
@@ -50,8 +48,7 @@ public class UserService {
                         user.getLastName(),
                         user.getDataCreated(),
                         user.getDateModified(),
-                        user.getPassword()
-                )).collect(Collectors.toList());
+                        user.getPassword())).collect(Collectors.toList());
     }
 
     public UserDTO findById(Long userId) {
@@ -71,7 +68,31 @@ public class UserService {
 
     @Transactional
     public void deleteById(Long userId) {
-        userRepository.findById(userId).orElseThrow(ResourceNotFound::new);
+        User user = userRepository.findById(userId).orElseThrow(ResourceNotFound::new);
         userRepository.deleteById(userId);
+    }
+
+    @Transactional
+    public UserDTO updateById(Long userId, UserDTO userDTO) {
+
+        User existing = userRepository.findById(userId).orElseThrow(ResourceNotFound::new);
+
+        User newUser = User.create(userDTO.getUserId(),
+                userDTO.getMail(),
+                userDTO.getUserUniqueId(),
+                userDTO.getRoleId(),
+                userDTO.getFirstName(),
+                userDTO.getLastName(),
+                userDTO.getDataCreated(),
+                userDTO.getDateModified(),
+                userDTO.getPassword());
+        existing.update(newUser);
+        userRepository.save(existing);
+
+        return new UserDTO(existing.getMail(),
+                existing.getRoleId(),
+                existing.getFirstName(),
+                existing.getLastName(),
+                existing.getPassword());
     }
 }
