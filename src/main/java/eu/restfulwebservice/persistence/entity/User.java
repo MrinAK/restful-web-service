@@ -1,7 +1,10 @@
 package eu.restfulwebservice.persistence.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
-import java.time.Instant;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "users")
@@ -21,24 +24,23 @@ public class User {
 
     private String lastName;
 
-    private Instant dataCreated;
+    @CreationTimestamp
+    private Timestamp dataCreated;
 
-    private Instant dateModified;
+    @UpdateTimestamp
+    private Timestamp dateModified;
 
-    //    TODO
     private String password;
 
 
     private User(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
-                 String lastName, Instant dataCreated, Instant dateModified, String password) {
+                 String lastName, String password) {
         this.userId = userId;
         this.mail = mail;
         this.userUniqueId = userUniqueId;
         this.roleId = roleId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dataCreated = dataCreated;
-        this.dateModified = dateModified;
         this.password = password;
     }
 
@@ -101,19 +103,19 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Instant getDataCreated() {
+    public Timestamp getDataCreated() {
         return dataCreated;
     }
 
-    public void setDataCreated(Instant dataCreated) {
+    public void setDataCreated(Timestamp dataCreated) {
         this.dataCreated = dataCreated;
     }
 
-    public Instant getDateModified() {
+    public Timestamp getDateModified() {
         return dateModified;
     }
 
-    public void setDateModified(Instant dateModified) {
+    public void setDateModified(Timestamp dateModified) {
         this.dateModified = dateModified;
     }
 
@@ -127,10 +129,10 @@ public class User {
 
 
     public static User create(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
-                              String lastName, Instant dataCreated, Instant dateModified, String password) {
+                              String lastName, String password) {
 
         return new User(userId, mail, userUniqueId, roleId, firstName,
-                lastName, dataCreated, dateModified, password);
+                lastName, password);
     }
 
     public void update(User newUser) {

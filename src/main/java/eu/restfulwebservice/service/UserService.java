@@ -29,8 +29,6 @@ public class UserService {
                 userDTO.getRoleId(),
                 userDTO.getFirstName(),
                 userDTO.getLastName(),
-                userDTO.getDataCreated(),
-                userDTO.getDateModified(),
                 userDTO.getPassword());
         userRepository.save(user);
     }
@@ -46,8 +44,6 @@ public class UserService {
                         user.getRoleId(),
                         user.getFirstName(),
                         user.getLastName(),
-                        user.getDataCreated(),
-                        user.getDateModified(),
                         user.getPassword())).collect(Collectors.toList());
     }
 
@@ -61,8 +57,6 @@ public class UserService {
                 user.getRoleId(),
                 user.getFirstName(),
                 user.getLastName(),
-                user.getDataCreated(),
-                user.getDateModified(),
                 user.getPassword());
     }
 
@@ -83,8 +77,6 @@ public class UserService {
                 userDTO.getRoleId(),
                 userDTO.getFirstName(),
                 userDTO.getLastName(),
-                userDTO.getDataCreated(),
-                userDTO.getDateModified(),
                 userDTO.getPassword());
         existing.update(newUser);
         userRepository.save(existing);

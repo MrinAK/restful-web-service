@@ -1,7 +1,5 @@
 package eu.restfulwebservice.service.dto;
 
-import java.time.Instant;
-
 public class UserDTO {
 
     private Long userId;
@@ -16,23 +14,16 @@ public class UserDTO {
 
     private String lastName;
 
-    private Instant dataCreated;
-
-    private Instant dateModified;
-
     private String password;
 
-
     public UserDTO(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
-                   String lastName, Instant dataCreated, Instant dateModified, String password) {
+                   String lastName, String password) {
         this.userId = userId;
         this.mail = mail;
         this.userUniqueId = userUniqueId;
         this.roleId = roleId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dataCreated = dataCreated;
-        this.dateModified = dateModified;
         this.password = password;
     }
 
@@ -94,22 +85,6 @@ public class UserDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Instant getDataCreated() {
-        return dataCreated;
-    }
-
-    public void setDataCreated(Instant dataCreated) {
-        this.dataCreated = dataCreated;
-    }
-
-    public Instant getDateModified() {
-        return dateModified;
-    }
-
-    public void setDateModified(Instant dateModified) {
-        this.dateModified = dateModified;
     }
 
     public String getPassword() {

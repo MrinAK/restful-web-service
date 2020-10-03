@@ -22,33 +22,28 @@ public class UserController {
     }
 
     @GetMapping("/")
-//  TODO @PreAuthorize("")
     public List<UserDTO> getAll() {
         return userService.findAll();
     }
 
     @PostMapping("/")
-//  TODO @PreAuthorize("")
     public ResponseEntity<Void> create(@RequestBody @Validated UserDTO userDTO) {
         userService.create(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{userId}")
-//    TODO @PreAuthorize("")
     public UserDTO findById(@PathVariable("userId") Long userId) {
         return userService.findById(userId);
     }
 
     @DeleteMapping("/{userId}")
-//  TODO @PreAuthorize("")
     public ResponseEntity<Void> deleteById(@PathVariable("userId") Long userId) {
         userService.deleteById(userId);
         return new ResponseEntity<>(HttpStatus.GONE);
     }
 
     @PutMapping("/{userId}")
-//  TODO @PreAuthorize("")
     public ResponseEntity<UserDTO> updateById(@PathVariable("userId") Long userId, @RequestBody @Validated UserDTO userDTO){
         return ResponseEntity.ok(userService.updateById(userId, userDTO));
     }
