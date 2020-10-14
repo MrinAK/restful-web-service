@@ -33,8 +33,8 @@ public class User {
     private String password;
 
 
-    private User(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
-                 String lastName, String password) {
+    private User(Long userId, String mail, String userUniqueId, Long roleId,
+                 String firstName, String lastName, String password) {
         this.userId = userId;
         this.mail = mail;
         this.userUniqueId = userUniqueId;
@@ -44,7 +44,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String mail, Long roleId, String firstName, String lastName, String password) {
+    private User(String mail, Long roleId, String firstName, String lastName, String password) {
         this.mail = mail;
         this.roleId = roleId;
         this.firstName = firstName;
@@ -128,8 +128,8 @@ public class User {
     }
 
 
-    public static User create(Long userId, String mail, String userUniqueId, Long roleId, String firstName,
-                              String lastName, String password) {
+    public static User create(Long userId, String mail, String userUniqueId, Long roleId,
+                              String firstName, String lastName, String password) {
 
         return new User(userId, mail, userUniqueId, roleId, firstName,
                 lastName, password);

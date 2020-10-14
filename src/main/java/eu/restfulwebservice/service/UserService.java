@@ -44,7 +44,8 @@ public class UserService {
                         user.getRoleId(),
                         user.getFirstName(),
                         user.getLastName(),
-                        user.getPassword())).collect(Collectors.toList());
+                        user.getPassword()))
+                .collect(Collectors.toList());
     }
 
     public UserDTO findById(Long userId) {
