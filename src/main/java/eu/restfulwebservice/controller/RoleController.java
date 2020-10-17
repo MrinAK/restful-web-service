@@ -22,28 +22,33 @@ public class RoleController {
     }
 
     @PostMapping("/")
+    //    @PreAuthorize("")
     public ResponseEntity<Void> create(@RequestBody @Validated RoleDTO roleDTO) {
         roleService.create(roleDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/")
+    //    @PreAuthorize("")
     public List<RoleDTO> getAll(){
         return roleService.findAll();
     }
 
     @GetMapping("/{roleId}")
+    //    @PreAuthorize("")
     public RoleDTO findById(@PathVariable("roleId") Long roleId) {
         return roleService.findById(roleId);
     }
 
 
     @PutMapping("/{roleId}")
+    //    @PreAuthorize("")
     public ResponseEntity<Object> updateById(@PathVariable("roleId") Long roleId, @RequestBody @Validated RoleDTO roleDTO){
         return ResponseEntity.ok(roleService.updateById(roleId, roleDTO));
     }
 
     @DeleteMapping("/{roleId}")
+    //    @PreAuthorize("")
     public ResponseEntity<Void> deleteById(@PathVariable("roleId") Long roleId) {
         roleService.deleteById(roleId);
         return new ResponseEntity<>(HttpStatus.GONE);
