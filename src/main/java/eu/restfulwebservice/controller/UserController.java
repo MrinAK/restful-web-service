@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-//    @PreAuthorize("")
+    @PreAuthorize("")
     public ResponseEntity<UserDTO> updateById(@PathVariable("userId") Long userId, @RequestBody @Validated UserDTO userDTO) {
         return ResponseEntity.ok(userService.updateById(userId, userDTO));
     }
