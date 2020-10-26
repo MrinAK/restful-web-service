@@ -47,8 +47,7 @@ public class User {
     private String password;
 
 
-    private User(Long userId, String mail, Long roleId,
-                 String firstName, String lastName, String password) {
+    private User(Long userId, String mail, Long roleId, String firstName, String lastName, String password) {
         this.userId = userId;
         this.mail = mail;
         this.roleId = roleId;
@@ -141,8 +140,7 @@ public class User {
     }
 
 
-    public static User create(Long userId, String mail, Long roleId,
-                              String firstName, String lastName, String password) {
+    public static User create(Long userId, String mail, Long roleId, String firstName, String lastName, String password) {
 
         return new User(userId, mail, roleId, firstName,
                 lastName, password);
