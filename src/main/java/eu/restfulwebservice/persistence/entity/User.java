@@ -1,8 +1,6 @@
 package eu.restfulwebservice.persistence.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -19,10 +17,12 @@ public class User {
 
     private String mail;
 
-    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
-    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type = "uuid-char")
-    private UUID userUniqueId = UUID.fromString(UUID.randomUUID().toString());
+    private String userUniqueId = UUID.randomUUID().toString();
+
+//    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
+//    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+//    @Type(type = "uuid-char")
+//    private UUID userUniqueId = UUID.fromString(UUID.randomUUID().toString());
 
 //    it's not working : java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID
 //    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
@@ -84,11 +84,11 @@ public class User {
         this.mail = mail;
     }
 
-    public UUID getUserUniqueId() {
+    public String getUserUniqueId() {
         return userUniqueId;
     }
 
-    public void setUserUniqueId(UUID userUniqueId) {
+    public void setUserUniqueId(String userUniqueId) {
         this.userUniqueId = userUniqueId;
     }
 
