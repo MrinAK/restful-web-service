@@ -16,6 +16,7 @@ public class User {
     private Long userId;
 
     private String mail;
+    
 //  ... it was so easy
     private String userUniqueId = UUID.randomUUID().toString();
     
@@ -31,7 +32,6 @@ public class User {
 //    @Type(type = "uuid-char")
 //    @Column(name="user_unique_id", columnDefinition = "VARCHAR(255)")
 //    private String userUniqueId = String.valueOf(UUID.fromString(UUID.randomUUID().toString()));
-
 
     private Long roleId;
 
