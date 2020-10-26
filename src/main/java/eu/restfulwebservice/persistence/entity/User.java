@@ -16,7 +16,7 @@ public class User {
     private Long userId;
 
     private String mail;
-
+//  ... it was so easy
     private String userUniqueId = UUID.randomUUID().toString();
     
 //    it's works but with UUID. ...
