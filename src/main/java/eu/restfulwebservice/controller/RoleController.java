@@ -53,6 +53,4 @@ public class RoleController {
         roleService.deleteById(roleId);
         return new ResponseEntity<>(HttpStatus.GONE);
     }
-
-
 }

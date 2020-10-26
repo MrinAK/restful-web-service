@@ -1,7 +1,5 @@
 package eu.restfulwebservice.service.dto;
 
-import java.sql.Timestamp;
-
 public class RoleDTO {
 
     private Long roleId;

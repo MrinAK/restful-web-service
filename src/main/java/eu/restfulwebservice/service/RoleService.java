@@ -3,7 +3,6 @@ package eu.restfulwebservice.service;
 import eu.restfulwebservice.persistence.entity.Role;
 import eu.restfulwebservice.persistence.repository.RoleRepository;
 import eu.restfulwebservice.service.dto.RoleDTO;
-import eu.restfulwebservice.service.dto.UserDTO;
 import eu.restfulwebservice.service.exeption.ResourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +60,5 @@ public class RoleService {
         roleRepository.save(existing);
 
         return new RoleDTO(existing.getRoleName());
-
     }
 }

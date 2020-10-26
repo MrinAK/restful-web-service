@@ -3,7 +3,6 @@ package eu.restfulwebservice.service;
 import eu.restfulwebservice.persistence.entity.Resource;
 import eu.restfulwebservice.persistence.repository.ResourceRepository;
 import eu.restfulwebservice.service.dto.ResourceDTO;
-import eu.restfulwebservice.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
