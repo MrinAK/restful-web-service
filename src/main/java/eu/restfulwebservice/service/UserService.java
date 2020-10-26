@@ -25,7 +25,6 @@ public class UserService {
 
         User user = User.create(userDTO.getUserId(),
                 userDTO.getMail(),
-                userDTO.getUserUniqueId(),
                 userDTO.getRoleId(),
                 userDTO.getFirstName(),
                 userDTO.getLastName(),
@@ -40,7 +39,6 @@ public class UserService {
                 .map(user -> new UserDTO(
                         user.getUserId(),
                         user.getMail(),
-                        user.getUserUniqueId(),
                         user.getRoleId(),
                         user.getFirstName(),
                         user.getLastName(),
@@ -54,7 +52,6 @@ public class UserService {
 
         return new UserDTO(user.getUserId(),
                 user.getMail(),
-                user.getUserUniqueId(),
                 user.getRoleId(),
                 user.getFirstName(),
                 user.getLastName(),
@@ -74,7 +71,6 @@ public class UserService {
 
         User newUser = User.create(userDTO.getUserId(),
                 userDTO.getMail(),
-                userDTO.getUserUniqueId(),
                 userDTO.getRoleId(),
                 userDTO.getFirstName(),
                 userDTO.getLastName(),

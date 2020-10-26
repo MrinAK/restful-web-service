@@ -54,10 +54,13 @@ dependencies {
 // https://mvnrepository.com/artifact/org.jboss.arquillian.testenricher/arquillian-testenricher-resource
     compile group: 'org.jboss.arquillian.testenricher', name: 'arquillian-testenricher-resource', version: '1.5.0.Final'
 
+    // https://mvnrepository.com/artifact/com.fasterxml.uuid/java-uuid-generator
+    compile group: 'com.fasterxml.uuid', name: 'java-uuid-generator', version: '4.0.1'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+
 }
 
 test {

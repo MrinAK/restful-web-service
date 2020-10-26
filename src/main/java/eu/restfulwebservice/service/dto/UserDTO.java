@@ -6,8 +6,6 @@ public class UserDTO {
 
     private String mail;
 
-    private String userUniqueId;
-
     private Long roleId;
 
     private String firstName;
@@ -16,11 +14,10 @@ public class UserDTO {
 
     private String password;
 
-    public UserDTO(Long userId, String mail, String userUniqueId, Long roleId,
+    public UserDTO(Long userId, String mail, Long roleId,
                    String firstName, String lastName, String password) {
         this.userId = userId;
         this.mail = mail;
-        this.userUniqueId = userUniqueId;
         this.roleId = roleId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -52,14 +49,6 @@ public class UserDTO {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public String getUserUniqueId() {
-        return userUniqueId;
-    }
-
-    public void setUserUniqueId(String userUniqueId) {
-        this.userUniqueId = userUniqueId;
     }
 
     public Long getRoleId() {
