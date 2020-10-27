@@ -23,14 +23,12 @@ public class ResourceController {
     }
 
     @PostMapping("/")
-    //    @PreAuthorize("")
     public ResponseEntity<Void> create(@RequestBody @Validated ResourceDTO resourceDTO){
         resourceService.create(resourceDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/")
-    //    @PreAuthorize("")
     public List<ResourceDTO> getAll() {
         return resourceService.findAll();
     }
