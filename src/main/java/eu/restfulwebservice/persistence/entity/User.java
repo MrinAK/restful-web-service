@@ -16,21 +16,22 @@ public class User {
     private Long userId;
 
     private String mail;
-
+    
+//  ... it was so easy
     private String userUniqueId = UUID.randomUUID().toString();
-
+    
+//    it's works but with UUID. ...
 //    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
 //    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 //    @Type(type = "uuid-char")
 //    private UUID userUniqueId = UUID.fromString(UUID.randomUUID().toString());
 
-//    it's not working : java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID
+//    it's not works -> Throw exception -> : java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID
 //    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
 //    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 //    @Type(type = "uuid-char")
 //    @Column(name="user_unique_id", columnDefinition = "VARCHAR(255)")
 //    private String userUniqueId = String.valueOf(UUID.fromString(UUID.randomUUID().toString()));
-
 
     private Long roleId;
 
