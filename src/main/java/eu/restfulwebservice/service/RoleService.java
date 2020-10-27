@@ -40,8 +40,7 @@ public class RoleService {
 
         Role role = roleRepository.findById(roleId).orElseThrow(ResourceNotFound::new);
 
-        return new RoleDTO(role.getRoleId(),
-                role.getRoleName());
+        return new RoleDTO(role.getRoleId(), role.getRoleName());
     }
 
     @Transactional

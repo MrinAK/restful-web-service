@@ -15,6 +15,11 @@ public class ResourceDTO {
 
     }
 
+    public ResourceDTO(Long resourceId, String resourceName) {
+        this.resourceId = resourceId;
+        this.resourceName = resourceName;
+    }
+
     public ResourceDTO() {
     }
 

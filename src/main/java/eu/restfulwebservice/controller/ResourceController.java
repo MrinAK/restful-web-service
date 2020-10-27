@@ -35,4 +35,9 @@ public class ResourceController {
         return resourceService.findAll();
     }
 
+    @GetMapping("/{resourceId}")
+    public ResourceDTO findById(@PathVariable("resourceId") Long resourceId){
+        return  resourceService.findById(resourceId);
+    }
+
 }
