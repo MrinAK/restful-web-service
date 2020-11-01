@@ -18,6 +18,7 @@ public class Resource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resourceId;
 
+// todo
     private Long roleId;
 
     private String resourceName;
@@ -80,5 +81,10 @@ public class Resource {
     public static Resource create(Long resourceId, Long roleId, String resourceName) {
 
         return new Resource(resourceId, roleId, resourceName);
+    }
+
+    public void update(Resource newResource) {
+        this.resourceName = newResource.resourceName;
+
     }
 }

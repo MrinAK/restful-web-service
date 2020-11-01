@@ -20,6 +20,10 @@ public class ResourceDTO {
         this.resourceName = resourceName;
     }
 
+    public ResourceDTO(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
     public ResourceDTO() {
     }
 

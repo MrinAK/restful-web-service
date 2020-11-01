@@ -33,9 +33,21 @@ public class ResourceController {
         return resourceService.findAll();
     }
 
+
     @GetMapping("/{resourceId}")
     public ResourceDTO findById(@PathVariable("resourceId") Long resourceId){
         return  resourceService.findById(resourceId);
+    }
+
+    @PutMapping("/{resourceId}")
+    public ResponseEntity<ResourceDTO> updateById(@PathVariable("resourceId") Long resourceId, @RequestBody @Validated ResourceDTO resourceDTO){
+        return ResponseEntity.ok(resourceService.updateById(resourceId, resourceDTO));
+    }
+
+    @DeleteMapping("/{resourceId}")
+    public ResponseEntity<Void> deleteById(@PathVariable("resourceId") Long resourceId) {
+        resourceService.deleteById(resourceId);
+        return new ResponseEntity<>(HttpStatus.GONE);
     }
 
 }

@@ -68,7 +68,5 @@ public class Role {
 
     public void update(Role newRole) {
         this.roleName = newRole.roleName;
-        this.dateCreated = newRole.dateCreated;
-        this.dateModified = newRole.dateModified;
     }
 }

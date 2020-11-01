@@ -16,10 +16,10 @@ public class User {
     private Long userId;
 
     private String mail;
-    
-//  ... it was so easy
+
+    //  ... it was so easy
     private String userUniqueId = UUID.randomUUID().toString();
-    
+
 //    it's works but with UUID. ...
 //    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
 //    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
@@ -143,8 +143,7 @@ public class User {
 
     public static User create(Long userId, String mail, Long roleId, String firstName, String lastName, String password) {
 
-        return new User(userId, mail, roleId, firstName,
-                lastName, password);
+        return new User(userId, mail, roleId, firstName, lastName, password);
     }
 
     public void update(User newUser) {

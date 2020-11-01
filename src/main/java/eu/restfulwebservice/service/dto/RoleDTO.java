@@ -1,6 +1,6 @@
 package eu.restfulwebservice.service.dto;
 
-public class RoleDTO {
+    public class RoleDTO {
 
     private Long roleId;
 
