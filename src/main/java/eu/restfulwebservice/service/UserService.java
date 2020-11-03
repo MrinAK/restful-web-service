@@ -25,7 +25,6 @@ public class UserService {
 
         User user = User.create(userDTO.getUserId(),
                 userDTO.getMail(),
-                userDTO.getRoleId(),
                 userDTO.getFirstName(),
                 userDTO.getLastName(),
                 userDTO.getPassword());
@@ -39,7 +38,6 @@ public class UserService {
                 .map(user -> new UserDTO(
                         user.getUserId(),
                         user.getMail(),
-                        user.getRoleId(),
                         user.getFirstName(),
                         user.getLastName(),
                         user.getPassword()))
@@ -52,7 +50,6 @@ public class UserService {
 
         return new UserDTO(user.getUserId(),
                 user.getMail(),
-                user.getRoleId(),
                 user.getFirstName(),
                 user.getLastName(),
                 user.getPassword());
@@ -71,7 +68,6 @@ public class UserService {
 
         User newUser = User.create(userDTO.getUserId(),
                 userDTO.getMail(),
-                userDTO.getRoleId(),
                 userDTO.getFirstName(),
                 userDTO.getLastName(),
                 userDTO.getPassword());
@@ -79,7 +75,6 @@ public class UserService {
         userRepository.save(existing);
 
         return new UserDTO(existing.getMail(),
-                existing.getRoleId(),
                 existing.getFirstName(),
                 existing.getLastName(),
                 existing.getPassword());

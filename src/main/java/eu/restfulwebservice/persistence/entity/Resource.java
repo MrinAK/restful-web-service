@@ -18,8 +18,8 @@ public class Resource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resourceId;
 
-// todo
-    private Long roleId;
+    @OneToOne
+    private Role role;
 
     private String resourceName;
 
@@ -29,9 +29,8 @@ public class Resource {
     @UpdateTimestamp
     private Timestamp dataModified;
 
-    private Resource(Long resourceId, Long roleId, String resourceName) {
+    private Resource(Long resourceId, String resourceName) {
         this.resourceId = resourceId;
-        this.roleId = roleId;
         this.resourceName = resourceName;
     }
 
@@ -46,12 +45,12 @@ public class Resource {
         this.resourceId = resourceId;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getResourceName() {
@@ -78,9 +77,8 @@ public class Resource {
         this.dataModified = dataModified;
     }
 
-    public static Resource create(Long resourceId, Long roleId, String resourceName) {
-
-        return new Resource(resourceId, roleId, resourceName);
+    public static Resource create(Long resourceId, String resourceName) {
+        return new Resource(resourceId, resourceName);
     }
 
     public void update(Resource newResource) {

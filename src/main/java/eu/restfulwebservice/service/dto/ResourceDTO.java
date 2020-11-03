@@ -1,23 +1,19 @@
 package eu.restfulwebservice.service.dto;
 
+import eu.restfulwebservice.persistence.entity.Role;
+
+import java.sql.Timestamp;
+
 public class ResourceDTO {
 
     private Long resourceId;
 
-    private Long roleId;
-
     private String resourceName;
-
-    public ResourceDTO(Long resourceId, Long roleId, String resourceName) {
-        this.resourceId = resourceId;
-        this.roleId = roleId;
-        this.resourceName = resourceName;
-
-    }
 
     public ResourceDTO(Long resourceId, String resourceName) {
         this.resourceId = resourceId;
         this.resourceName = resourceName;
+
     }
 
     public ResourceDTO(String resourceName) {
@@ -27,24 +23,17 @@ public class ResourceDTO {
     public ResourceDTO() {
     }
 
+
     public Long getResourceId() {
-        return this.resourceId;
+        return resourceId;
     }
 
     public void setResourceId(Long resourceId) {
         this.resourceId = resourceId;
     }
 
-    public Long getRoleId() {
-        return this.roleId;
-    }
-
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
-
     public String getResourceName() {
-        return this.resourceName;
+        return resourceName;
     }
 
     public void setResourceName(String resourceName) {

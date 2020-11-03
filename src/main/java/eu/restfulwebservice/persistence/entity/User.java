@@ -17,23 +17,10 @@ public class User {
 
     private String mail;
 
-    //  ... it was so easy
     private String userUniqueId = UUID.randomUUID().toString();
 
-//    it's works but with UUID. ...
-//    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
-//    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-//    @Type(type = "uuid-char")
-//    private UUID userUniqueId = UUID.fromString(UUID.randomUUID().toString());
-
-//    it's not works -> Throw exception -> : java.lang.ClassCastException: class java.lang.String cannot be cast to class java.util.UUID
-//    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
-//    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-//    @Type(type = "uuid-char")
-//    @Column(name="user_unique_id", columnDefinition = "VARCHAR(255)")
-//    private String userUniqueId = String.valueOf(UUID.fromString(UUID.randomUUID().toString()));
-
-    private Long roleId;
+    @OneToOne
+    private Role role;
 
     private String firstName;
 
@@ -48,24 +35,27 @@ public class User {
     private String password;
 
 
-    private User(Long userId, String mail, Long roleId, String firstName, String lastName, String password) {
+    private User(Long userId, String mail, Role role, String firstName, String lastName, String password) {
         this.userId = userId;
         this.mail = mail;
-        this.roleId = roleId;
+        this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
     }
 
-    private User(String mail, Long roleId, String firstName, String lastName, String password) {
+    private User(String mail, Role role, String firstName, String lastName, String password) {
         this.mail = mail;
-        this.roleId = roleId;
+        this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
     }
 
     protected User() {
+    }
+
+    protected User(Long userId, String mail, String firstName, String lastName, String password) {
     }
 
     public Long getUserId() {
@@ -92,12 +82,12 @@ public class User {
         this.userUniqueId = userUniqueId;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getFirstName() {
@@ -141,14 +131,13 @@ public class User {
     }
 
 
-    public static User create(Long userId, String mail, Long roleId, String firstName, String lastName, String password) {
+    public static User create(Long userId, String mail, String firstName, String lastName, String password) {
 
-        return new User(userId, mail, roleId, firstName, lastName, password);
+        return new User(userId, mail, firstName, lastName, password);
     }
 
     public void update(User newUser) {
         this.mail = newUser.mail;
-        this.roleId = newUser.roleId;
         this.firstName = newUser.firstName;
         this.lastName = newUser.lastName;
         this.password = newUser.password;
