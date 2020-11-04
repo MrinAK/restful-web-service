@@ -20,6 +20,7 @@ public class User {
     private String userUniqueId = UUID.randomUUID().toString();
 
     @OneToOne
+    @JoinColumn(name = "roleId")
     private Role role;
 
     private String firstName;

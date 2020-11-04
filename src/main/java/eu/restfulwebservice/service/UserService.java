@@ -64,7 +64,8 @@ public class UserService {
     @Transactional
     public UserDTO updateById(Long userId, UserDTO userDTO) {
 
-        User existing = userRepository.findById(userId).orElseThrow(ResourceNotFound::new);
+        User existing = userRepository.findById(userId)
+                .orElseThrow(ResourceNotFound::new);
 
         User newUser = User.create(userDTO.getUserId(),
                 userDTO.getMail(),

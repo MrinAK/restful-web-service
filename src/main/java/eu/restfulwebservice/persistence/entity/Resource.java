@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+import static javax.persistence.ConstraintMode.PROVIDER_DEFAULT;
+
 @Entity
 @Table(name = "resources")
 public class Resource {
@@ -19,6 +21,7 @@ public class Resource {
     private Long resourceId;
 
     @OneToOne
+    @JoinColumn(name = "roleId")
     private Role role;
 
     private String resourceName;
