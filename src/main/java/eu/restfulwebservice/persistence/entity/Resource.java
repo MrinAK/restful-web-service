@@ -3,14 +3,8 @@ package eu.restfulwebservice.persistence.entity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
-
-import static javax.persistence.ConstraintMode.PROVIDER_DEFAULT;
 
 @Entity
 @Table(name = "resources")
