@@ -45,18 +45,15 @@ public class User {
         this.password = password;
     }
 
-    private User(String mail, Role role, String firstName, String lastName, String password) {
+    private User(Long userId, String mail, String firstName, String lastName, String password) {
+        this.userId = userId;
         this.mail = mail;
-        this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
     }
 
     protected User() {
-    }
-
-    protected User(Long userId, String mail, String firstName, String lastName, String password) {
     }
 
     public Long getUserId() {
