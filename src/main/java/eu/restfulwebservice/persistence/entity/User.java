@@ -5,6 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -17,11 +19,11 @@ public class User {
 
     private String mail;
 
-    private String userUniqueId = UUID.randomUUID().toString();
-
-    @OneToOne
-    @JoinColumn(name = "roleId")
+    @ManyToOne
+    @JoinColumn(name = "role_id")
     private Role role;
+
+    private String userUniqueId = UUID.randomUUID().toString();
 
     private String firstName;
 
