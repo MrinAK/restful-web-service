@@ -1,10 +1,14 @@
 package eu.restfulwebservice.service.dto;
 
+import eu.restfulwebservice.persistence.entity.Role;
+
 public class UserDTO {
 
     private Long userId;
 
     private String mail;
+
+    private Role role;
 
     private String firstName;
 

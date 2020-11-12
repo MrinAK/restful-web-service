@@ -19,9 +19,7 @@ public class User {
 
     private String mail;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    private Long roleId;
 
     private String userUniqueId = UUID.randomUUID().toString();
 
@@ -38,10 +36,10 @@ public class User {
     private String password;
 
 
-    private User(Long userId, String mail, Role role, String firstName, String lastName, String password) {
+    private User(Long userId, String mail, Long roleId, String firstName, String lastName, String password) {
         this.userId = userId;
         this.mail = mail;
-        this.role = role;
+        this.roleId = roleId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -82,12 +80,12 @@ public class User {
         this.userUniqueId = userUniqueId;
     }
 
-    public Role getRole() {
-        return role;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public String getFirstName() {
