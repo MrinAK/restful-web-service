@@ -1,6 +1,8 @@
 package eu.restfulwebservice.service;
 
+import eu.restfulwebservice.persistence.entity.Role;
 import eu.restfulwebservice.persistence.entity.User;
+import eu.restfulwebservice.persistence.repository.RoleRepository;
 import eu.restfulwebservice.persistence.repository.UserRepository;
 import eu.restfulwebservice.service.dto.UserDTO;
 import eu.restfulwebservice.service.exeption.ResourceNotFound;
@@ -16,15 +18,21 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final RoleRepository roleRepository;
+
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     public void create(UserDTO userDTO) {
 
+        Role role = roleRepository.findById(userDTO.getRoleId()).orElseThrow(ResourceNotFound::new);
+
         User user = User.create(userDTO.getUserId(),
                 userDTO.getMail(),
+                role,
                 userDTO.getFirstName(),
                 userDTO.getLastName(),
                 userDTO.getPassword());
@@ -38,6 +46,7 @@ public class UserService {
                 .map(user -> new UserDTO(
                         user.getUserId(),
                         user.getMail(),
+                        user.getRole().getRoleId(),
                         user.getFirstName(),
                         user.getLastName(),
                         user.getPassword()))
@@ -50,6 +59,7 @@ public class UserService {
 
         return new UserDTO(user.getUserId(),
                 user.getMail(),
+                user.getRole().getRoleId(),
                 user.getFirstName(),
                 user.getLastName(),
                 user.getPassword());
@@ -67,8 +77,11 @@ public class UserService {
         User existing = userRepository.findById(userId)
                 .orElseThrow(ResourceNotFound::new);
 
+        Role role = roleRepository.findById(userDTO.getRoleId()).orElseThrow(ResourceNotFound::new);
+
         User newUser = User.create(userDTO.getUserId(),
                 userDTO.getMail(),
+                role,
                 userDTO.getFirstName(),
                 userDTO.getLastName(),
                 userDTO.getPassword());

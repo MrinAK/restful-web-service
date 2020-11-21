@@ -19,7 +19,10 @@ public class User {
 
     private String mail;
 
-    private Long roleId;
+    //    TODO must mapped with the parent -> Role ... and get the column param
+    @OneToOne
+    @JoinColumn(name = "roleId")
+    private Role role;
 
     private String userUniqueId = UUID.randomUUID().toString();
 
@@ -36,10 +39,10 @@ public class User {
     private String password;
 
 
-    private User(Long userId, String mail, Long roleId, String firstName, String lastName, String password) {
+    private User(Long userId, String mail, Role role, String firstName, String lastName, String password) {
         this.userId = userId;
         this.mail = mail;
-        this.roleId = roleId;
+        this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -80,12 +83,12 @@ public class User {
         this.userUniqueId = userUniqueId;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getFirstName() {
@@ -129,9 +132,9 @@ public class User {
     }
 
 
-    public static User create(Long userId, String mail, String firstName, String lastName, String password) {
+    public static User create(Long userId, String mail,Role role, String firstName, String lastName, String password) {
 
-        return new User(userId, mail, firstName, lastName, password);
+        return new User(userId, mail,role, firstName, lastName, password);
     }
 
     public void update(User newUser) {
